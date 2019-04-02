@@ -1,0 +1,11 @@
+/*.random-planet.jumbotron {*/
+    /*padding: 30px;*/
+/*}*/
+
+.random-planet .image-planet {
+     margin-right: 30px;
+ }
+
+.random-planet img{
+    max-width: 200px;
+}

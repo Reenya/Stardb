@@ -7,17 +7,30 @@ import ItemList from "../item-list";
 
 
 export default class App extends React.Component{
+    state = {
+        showRandomPlanet: true,
+        selectedPerson:null
+    }
+
+    onPersonSelected =(id) =>{
+        console.log('id',id)
+        this.setState({
+            selectedPerson:id
+        })
+    }
+
     render() {
+        console.log("this.state.selectedPerson",this.state.selectedPerson);
         return (<div className="App container">
             <Header/>
             <RandomPlanet/>
 
                 <div className="row">
                     <div className="col-sm-12 col-md-6">
-                        <ItemList />
+                        <ItemList onItemSelected = {this.onPersonSelected}/>
                     </div>
                     <div className="col-sm-12 col-md-6">
-                        <PersonDetails />
+                        <PersonDetails personId = {this.state.selectedPerson}/>
                     </div>
 
                 </div>

@@ -6,35 +6,31 @@ import ErrorBoundary from "../error-boundary/error-boundary";
 
 
 export default class Page extends React.Component {
-    constructor() {
-        super();
-
-    }
 
     state = {
         selectItem: 1,
-        hasError: false,
-        type: null
+        data: null
+
     };
 
     componentDidMount() {
-        this.setState({
-            type: this.props.type
-        })
+        this.setState({data: this.props.getListData})
+        // console.log(this.props.getData)
     }
 
-    onPeopleSelected() {
-
+    onPeopleSelected = (id) => {
+        this.setState({selectItem:id})
     }
 
     render() {
-        // if (this.state.hasError) return <ErrorIndicator/>
-
         return (
             <ErrorBoundary>
                 <div className="row mb-4">
                     <div className="col-sm-12 col-md-6">
-                        <ItemList onClick={this.onPeopleSelected()} type="people"/>
+                        <ItemList
+                            getListData ={ this.props.getListData}
+                            onItemSelected ={this.onPeopleSelected}/>
+
                     </div>
                     <div className="col-sm-12 col-md-6">
                         <PersonDetails personId={this.state.selectItem}/>

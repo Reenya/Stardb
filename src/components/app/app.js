@@ -7,7 +7,7 @@ import ItemList from "../item-list";
 import Page from "../page/page";
 import ErrorIndicator from "../error-indicator/error-indicator";
 import ErrorBoundary from "../error-boundary/error-boundary";
-
+import PeoplePage from "../page/peoplePage";
 
 
 export default class App extends React.Component {
@@ -28,9 +28,8 @@ export default class App extends React.Component {
             <div className="App container">
                 <Header/>
                 <RandomPlanet/>
-                <Page type="people"/>
-                <Page type="people"/>
-                <Page type="people"/>
+                <PeoplePage/>
+
                 {/*<div className="row mb-4">*/}
                 {/*<div className="col-sm-12 col-md-6">*/}
                 {/*<ItemList onItemSelected = {this.onPersonSelected} type="planets"/>*/}

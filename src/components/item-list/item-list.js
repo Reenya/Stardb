@@ -5,47 +5,22 @@ import Spinner from '../spinner'
 import ErrorIndicator from '../error-indicator'
 
 export default class ItemList extends React.Component {
-    swapiService = new SwapiService();
 
     state = {
         list: null,
         loading: true,
         type: null,
-        hasError: true
+        hasError: false
     };
 
     componentDidMount() {
-        this.setState({
-            type: this.props.type
-        });
-        const getValuesList = (list) => {
-            this.setState({
-                list,
-                loading: false,
-                hasError: false
-            })
-        };
-        console.log(this.props.type);
-        switch (this.props.type) {
-            case "people" :
-                this.swapiService
-                    .getAllPeople()
-                    .then(getValuesList)
-                    .catch(this.catchError);
-                break;
-            case "planets" :
-                this.swapiService
-                    .getAllPlanets()
-                    .then(getValuesList)
-                    .catch(this.catchError);
-                break;
-            case "ships" :
-                this.swapiService
-                    .getAllStarships()
-                    .then(getValuesList)
-                    .catch(this.catchError);
-                break;
-        }
+        const {getListData}  = this.props;
+
+        getListData().then((list) => {
+            console.log('why it is so hard????');
+             this.setState({list,loading:false})
+        })
+            .catch(this.catchError);
     };
 
     catchError = () => {
@@ -54,7 +29,7 @@ export default class ItemList extends React.Component {
             loading: false
         })
         console.log('я почему-то считаю что ттут есть ошибка')
-    }
+    };
 
     renderList = (arr) => {
         return arr.map(({id, name}) => {
@@ -67,6 +42,7 @@ export default class ItemList extends React.Component {
     }
 
     render() {
+
 
         const {list, loading, hasError} = this.state;
 

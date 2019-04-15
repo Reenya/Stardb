@@ -1,7 +1,7 @@
-export  default class SwapiService {
+export default class SwapiService {
 
     _apiBase = 'https://swapi.co/api';
-    getResource =async  (url) =>{
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
         if (!res.ok) {
             // throw new Error (`Could not fetch ${url}
@@ -11,46 +11,43 @@ export  default class SwapiService {
         return await res.json();
     }
 
-    async getAllPeople() {
+    getAllPeople = async () => {
         const {results} = await this.getResource(`/people/`);
         return results.map(this._transformPerson);
     };
-     getPerson = async(id)=> {
+    getPerson = async (id) => {
         const person = await this.getResource(`/people/${id}`);
-        return  this._transformPerson(person)
+        return this._transformPerson(person)
     };
 
 
-    async getAllPlanets() {
+    getAllPlanets = async () => {
         const {results} = await this.getResource(`/planets/`);
         return results.map(this._transformPlanet);
     };
-    async getPlanet(id) {
-        //const planet = await this.getResource(`/planets/${id}`).then((p) => this._transformPlanet(p));
+    getPlanet = async (id) => {
         const planet = await this.getResource(`/planets/${id}`);
-        // const res = await planet.then( (item) => item);
         return this._transformPlanet(planet);
     };
-    async getAllStarships() {
+    getAllStarships = async () => {
         const {results} = await this.getResource(`/starships/`);
         return results.map(this._transformStarship);
     };
-    async getStarship(id) {
+    getStarship = async (id) => {
         const starship = await this.getResource(`/starships/${id}`);
         return this._transformStarship(starship);
     };
 
-    _extractId(item){
+    _extractId(item) {
         const idRegExp = /\/([0-9]*)\/$/;
         const id = item.url.match(idRegExp)[1];
         return id;
     };
 
-    _transformPlanet =  (planet) => {
-
+    _transformPlanet = (planet) => {
         return {
-             id: this._extractId(planet),
-            planetName: planet.name,
+            id: this._extractId(planet),
+            name: planet.name,
             population: planet.population,
             rotationPeriod: planet.rotation_period,
             diameter: planet.diameter
@@ -82,7 +79,6 @@ export  default class SwapiService {
 
         }
     };
-
 
 
 };

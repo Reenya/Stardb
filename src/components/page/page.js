@@ -1,9 +1,8 @@
 import React from "react";
 import ItemList from "../item-list/item-list";
-import PersonDetails from "../person-details/person-details";
-import ErrorIndicator from "../error-indicator/error-indicator";
-import ErrorBoundary from "../error-boundary/error-boundary";
-
+import PersonDetails from "../person-details";
+import ErrorBoundary from "../error-boundary";
+import Row from "../../row";
 
 export default class Page extends React.Component {
 
@@ -14,29 +13,35 @@ export default class Page extends React.Component {
     };
 
     componentDidMount() {
-        this.setState({data: this.props.getListData})
         // console.log(this.props.getData)
     }
 
     onPeopleSelected = (id) => {
-        this.setState({selectItem:id})
+        this.setState({selectItem: id})
     }
 
+
     render() {
+        const itemList = (
+            <ItemList
+                getListData={this.props.getListData}
+                onItemSelected={this.onPeopleSelected}
+                renderItemList={this.props.renderItemList}/>
+        );
+
+        const personDetails = (
+            <PersonDetails personId={this.state.selectItem}/>
+        );
+
         return (
             <ErrorBoundary>
-                <div className="row mb-4">
-                    <div className="col-sm-12 col-md-6">
-                        <ItemList
-                            getListData ={ this.props.getListData}
-                            onItemSelected ={this.onPeopleSelected}/>
+                <Row left={itemList} right={personDetails}/>
 
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                        <PersonDetails personId={this.state.selectItem}/>
-                    </div>
-                </div>
             </ErrorBoundary>
+
+
+
+
         )
 
     }

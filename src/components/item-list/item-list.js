@@ -17,7 +17,6 @@ export default class ItemList extends React.Component {
         const {getListData}  = this.props;
 
         getListData().then((list) => {
-            console.log('why it is so hard????');
              this.setState({list,loading:false})
         })
             .catch(this.catchError);
@@ -28,15 +27,17 @@ export default class ItemList extends React.Component {
             hasError: true,
             loading: false
         })
-        console.log('я почему-то считаю что ттут есть ошибка')
     };
 
     renderList = (arr) => {
-        return arr.map(({id, name}) => {
+        return arr.map((item) => {
+            const { id } = item;
+            const resultRender = this.props.renderItemList(item);
+
             return <li className="list-group-item list-group-item-action"
                        onClick={() => this.props.onItemSelected(id)}
                        key={id}>
-                {name}
+                {resultRender}
             </li>
         })
     }

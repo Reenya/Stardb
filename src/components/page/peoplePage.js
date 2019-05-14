@@ -7,7 +7,10 @@ class PeoplePage extends React.Component{
     swapiService = new SwapiService();
     render() {
         return(
-            <Page getListData ={this.swapiService.getAllPeople} testData = {()=> {console.log('hei im test function')}}/>
+            <Page getListData ={this.swapiService.getAllPeople}
+                  renderItemList={({name,gender}) => `${name} (gender: ${gender})`}
+                  renderDetails
+                  />
         )
     }
 

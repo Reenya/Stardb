@@ -2,7 +2,7 @@ import React from "react";
 import './app.css';
 import Header from "../header";
 import RandomPlanet from "../random-planet";
-import PeoplePage from "../page/peoplePage";
+import {PeoplePage, PlanetsPage, StarshipsPage} from "../page/peoplePage";
 
 
 export default class App extends React.Component {
@@ -24,6 +24,8 @@ export default class App extends React.Component {
                 <Header/>
                 <RandomPlanet/>
                 <PeoplePage/>
+                <PlanetsPage/>
+                <StarshipsPage/>
             </div>
         );
     }

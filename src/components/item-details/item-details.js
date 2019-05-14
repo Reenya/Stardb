@@ -54,7 +54,10 @@ export default class ItemDetails extends React.Component {
 
         const spinner = loading ? <Spinner/> : null;
         const itemDetails = item && !loading ? (
-                <ItemDetailsDisplay item={item} renderDetails={this.props.renderDetails}>
+                <ItemDetailsDisplay
+                    item={item}
+                    renderDetails={this.props.renderDetails}
+                    nameImgSection={this.props.nameImgSection}>
                     {this.props.children}
                 </ItemDetailsDisplay>
             )
@@ -79,11 +82,11 @@ const Record = ({item, field, label}) => {
 
 export {Record};
 
-const ItemDetailsDisplay = ({item, children}) => {
+const ItemDetailsDisplay = ({item, children,nameImgSection}) => {
     return (
         <div className="row ">
             <div className="image-planet ">
-                <img src={`https://starwars-visualguide.com/assets/img/characters/${item.id}.jpg`}
+                <img src={`https://starwars-visualguide.com/assets/img/${nameImgSection}/${item.id}.jpg`}
                      className="rounded "
                      alt=""/>
             </div>

@@ -7,7 +7,7 @@ import ItemDetails from "../item-details";
 export default class Page extends React.Component {
 
     state = {
-        selectItem: 1,
+        selectItem: 10,
         data: null
 
     };
@@ -29,7 +29,8 @@ export default class Page extends React.Component {
             <ItemDetails
                 itemId={this.state.selectItem}
                 getItemDetails={this.props.getItemDetails}
-                renderDetails={this.props.renderDetails}>
+                nameImgSection={this.props.nameImgSection}>
+
                 {this.props.children}
             </ItemDetails>
         );

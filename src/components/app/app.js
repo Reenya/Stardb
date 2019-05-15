@@ -1,8 +1,10 @@
 import React from "react";
-import './app.css';
 import Header from "../header";
 import RandomPlanet from "../random-planet";
 import {PeoplePage, PlanetsPage, StarshipsPage} from "../page/peoplePage";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+
+import './app.css';
 
 
 export default class App extends React.Component {
@@ -20,13 +22,18 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div className="App container">
-                <Header/>
-                <RandomPlanet/>
-                <PeoplePage/>
-                <PlanetsPage/>
-                <StarshipsPage/>
-            </div>
+            <Router>
+                <div className="App container">
+                    <Header/>
+                    <RandomPlanet/>
+
+                    <Route path="/" component={PeoplePage} exact={true}/>
+                    <Route path="/people" component={PeoplePage}/>
+                    <Route path="/planets" component={PlanetsPage}/>
+                    <Route path="/starships" component={StarshipsPage}/>
+
+                </div>
+            </Router>
         );
     }
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './header.css';
 
 const Header  = () => {
@@ -9,11 +11,11 @@ const Header  = () => {
             </div>
             <ul className='nav col   justify-content-center'>
                 <li className="text-success nav-item ">
-                    <a href="#" className="nav-link">People</a></li>
+                    <Link to='/people'  className="nav-link">People</Link></li>
                 <li className="text-success nav-item">
-                    <a href="#" className="nav-link">Planets</a></li>
+                    <Link to='/planets'  className="nav-link">Planets</Link></li>
                 <li className="text-success nav-item">
-                    <a href="#" className="nav-link">Starships</a></li>
+                    <Link to='/starships'  className="nav-link">Starships</Link></li>
             </ul>
         </div>
     )

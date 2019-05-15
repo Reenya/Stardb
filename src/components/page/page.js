@@ -1,5 +1,5 @@
 import React from "react";
-import ItemList from "../item-list/item-list";
+import ItemList from "../item-list";
 import ErrorBoundary from "../error-boundary";
 import Row from "../../row";
 import ItemDetails from "../item-details";

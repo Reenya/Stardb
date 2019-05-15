@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default class ThrowExeption extends React.Component{
-
-
     state = {
         getError:false
     }
@@ -15,10 +13,6 @@ export default class ThrowExeption extends React.Component{
             getError:true
         })
     }
-
-
-
-
 
     render() {
         if (this.state.getError) this.foo.bar = 0;

@@ -84,17 +84,17 @@ export {Record};
 
 const ItemDetailsDisplay = ({item, children,nameImgSection}) => {
     return (
-        <div className="row ">
-            <div className="image-planet ">
+        <div className="item-details row ">
+            <div className=" image-planet col">
                 <img src={`https://starwars-visualguide.com/assets/img/${nameImgSection}/${item.id}.jpg`}
-                     className="rounded "
+                     className="item-details__img rounded "
                      alt=""/>
             </div>
 
             <div className="col">
                 <div><h4>{item.name}</h4></div>
 
-                <ul className="list-group list-group-flush">
+                <ul className="list-group list-group-flush ">
                     {
                         React.Children.map(children, (child) => {
                             return React.cloneElement(child, {item});

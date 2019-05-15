@@ -1,3 +1,5 @@
-.item-details img {
+.item-details__img {
   max-width: 200px;
+  margin-bottom: 20px;
 }
+
